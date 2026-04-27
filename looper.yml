@@ -1,0 +1,19 @@
+version: 1
+
+app:
+  name: smartnutrition-application
+  runtime: nodejs20
+
+pipeline:
+  install:
+    command: npm ci
+  build:
+    command: npm run build
+    output: dist
+  test:
+    command: npm run build
+
+deployment:
+  type: static
+  artifact: dist
+  start_command: npm run preview -- --port $PORT
